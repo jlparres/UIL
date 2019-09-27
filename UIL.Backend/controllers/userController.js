@@ -2,6 +2,9 @@
 // Modulos y librerias
 var bcrypt = require('bcrypt-nodejs');
 
+// Servicios
+var jwt = require('../services/jwt');
+
 // Modelos
 var User = require('../models/user');
 
@@ -19,7 +22,8 @@ function saveUser(req, res) {
     // Recoger parametros de peticion
     var params = req.body;
 
-    console.log(req);
+    console.log(req.body);
+    //console.log(req.name);
 
     // Asignar varlores al objeto Usuario
     if(params.password && params.name && params.surname && params.email && params.nick) {
@@ -75,23 +79,41 @@ function saveUser(req, res) {
 
 function login(req, res) {
     var params = req.body;
-    console.log("Params", params);
     var email = params.email;
+    var pass = params.password;
 
-    User.findOne({ email: email.toLowerCase() }, (err, issetUser) => {
+    User.findOne({ email: email.toLowerCase() }, (err, user) => {
         if(err) {
-            res.status(500).send({ message: "Error al comprobar el usuario." });
-        } 
-        else {
-            if(issetUser) { 
-                res.status(200).send({ message: "Login correcto.", issetUser });
+            res.status(500).send({
+                message: "Error al buscar el Usuario."
+            });
+        } else {
+            if(user) {
+                bcrypt.compare(pass, user.password, (err, check) => {
+                    if(err) { 
+                        res.status(404).send({
+                            message: "Error al buscar el Usuario."
+                        });
+                    } else {
+                        if(check) {
+                            // Comprobar y generar el Token
+                            if(params.gettoken) {
+                                // Devolver el token en JWT
+                                var token = jwt.createToken(user);
+                                res.status(200).send({ token: token });
+                            } else {
+                                res.status(200).send({ user: user });    
+                            }
+                        } else {
+                            res.status(200).send({ message: "Usuario o contraseña incorrecto." });
+                        }
+                    }
+                });
+            } else {
+                res.status(404).send({ message: "El usuario no existe." });
             }
-            else {
-                res.status(404).send({ message: "Usuario no existe." });
-            }    
         }
     });
-
 }
 
 // Exports
