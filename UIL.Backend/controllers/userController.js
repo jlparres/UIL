@@ -79,37 +79,48 @@ function saveUser(req, res) {
 
 function login(req, res) {
     var params = req.body;
+
     var email = params.email;
     var pass = params.password;
 
-    User.findOne({ email: email.toLowerCase() }, (err, user) => {
+    console.log("Email", email);
+    console.log("Password", pass);
+    console.log("GetToken", params.getToken);
+
+    User.findOne({ email: params.email.toLowerCase() }, (err, user) => {
         if(err) {
+            console.log("err", err);
             res.status(500).send({
                 message: "Error al buscar el Usuario."
             });
-        } else {
+        } 
+        else {
             if(user) {
                 bcrypt.compare(pass, user.password, (err, check) => {
-                    if(err) { 
+                    if(err) {
+                        console.log("error", err);
                         res.status(404).send({
-                            message: "Error al buscar el Usuario."
+                            message: "Error al validar usuario."
                         });
-                    } else {
+                    } 
+                    else {
                         if(check) {
                             // Comprobar y generar el Token
-                            if(params.gettoken) {
+                            if(params.getToken) {
                                 // Devolver el token en JWT
                                 var token = jwt.createToken(user);
                                 res.status(200).send({ token: token });
                             } else {
                                 res.status(200).send({ user: user });    
                             }
-                        } else {
+                        }
+                        else {
                             res.status(200).send({ message: "Usuario o contraseña incorrecto." });
                         }
                     }
                 });
-            } else {
+            } 
+            else {
                 res.status(404).send({ message: "El usuario no existe." });
             }
         }
