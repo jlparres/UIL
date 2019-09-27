@@ -8,6 +8,7 @@ var api = express.Router();
 // Nombre de la ruta del API
 api.get('/users', UserController.getUser);
 api.post('/register', UserController.saveUser);
+api.post('/login', UserController.login);
 
 module.exports = api;
 

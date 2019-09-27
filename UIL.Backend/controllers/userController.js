@@ -73,7 +73,28 @@ function saveUser(req, res) {
     }
 }
 
+function login(req, res) {
+    var params = req.body;
+    console.log("Params", params);
+    var email = params.email;
+
+    User.findOne({ email: email.toLowerCase() }, (err, issetUser) => {
+        if(err) {
+            res.status(500).send({ message: "Error al comprobar el usuario." });
+        } 
+        else {
+            if(issetUser) { 
+                res.status(200).send({ message: "Login correcto.", issetUser });
+            }
+            else {
+                res.status(404).send({ message: "Usuario no existe." });
+            }    
+        }
+    });
+
+}
+
 // Exports
 module.exports = {
-    getUser, saveUser
+    getUser, saveUser, login
 };

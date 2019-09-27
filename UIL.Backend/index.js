@@ -11,8 +11,9 @@ mongoose.connect('mongodb://localhost:27017/UIL', { useMongoClient: true })
     .then(() => {
         console.log("Conexión a basae de datos UIL correctamente."); 
 
+        // Lanzar servidor API
         app.listen(port, () => {
-            console.log("El servidor está online.");
+            console.log("El servidor está online. http://localhost:3789/api");
         });
     }).catch(err => console.log(err));
 // 
