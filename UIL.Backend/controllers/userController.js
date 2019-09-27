@@ -12,7 +12,7 @@ var User = require('../models/user');
 // Acciones
 function getUser(req, res) {
     res.status(200).send({
-        message: 'Probando el controlador getUser'
+        message: 'Usuario Logeado.', Usuario: req.user
     });
 }
 
