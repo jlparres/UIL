@@ -90,9 +90,7 @@ function login(req, res) {
     User.findOne({ email: params.email.toLowerCase() }, (err, user) => {
         if(err) {
             console.log("err", err);
-            res.status(500).send({
-                message: "Error al buscar el Usuario."
-            });
+            res.status(500).send({ message: "Error al buscar el Usuario." });
         } 
         else {
             if(user) {
