@@ -11,6 +11,7 @@ var AirsoftField = require('../models/airsoftfield');
 // GetAll
 // GET https://localhost:3789/api/arisoftfield
 function GetAll(req, res, next) {
+    console.log("entro aquí");
     if(req.query.filter) {
         next();
         return;
