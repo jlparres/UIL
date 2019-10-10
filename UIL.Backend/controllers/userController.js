@@ -1,6 +1,8 @@
 'use strict'
 // Modulos y librerias
 var bcrypt = require('bcrypt-nodejs');
+var fs = require('fs');
+var path = require('path');
 
 // Servicios
 var jwt = require('../services/jwt');
@@ -125,7 +127,102 @@ function login(req, res) {
     });
 }
 
+function udpateUser(req, res) {
+    var userId = req.params.id;
+    var update = req.body;
+    console.log("req", req.user);
+    // Solo permitimos actualizar al usuario logeado.
+    if(userId != req.user.sub) {
+        return res.status(500).send({ message: "No tienes permiso para actualizar el usuario."});
+    }
+    else {
+        User.findByIdAndUpdate(userId, update, {new:true}, (err, userUpdated) => {
+            if(err) {
+                res.status(500).send({ message: "Error al actualizar el usuario."});
+            }
+            else {
+                if(!userUpdated) {
+                    res.status(404).send({ message: "No se ha podido actualizar el usuario."});
+                }
+                else {
+                    res.status(200).send({message: "Usuario actualizado correctamente", Usuario: userUpdated});
+                }
+            }
+        });
+    }
+
+    //res.status(400).send({ message: "Usuario incorrecto."});
+    //res.status(200).send({ message: "Actualizar usuario."});
+}
+
+
+function uploadImage(req, res) {
+    var userId = req.params.id;
+    var fileName = 'No subido...';
+    
+    console.log("UserId", userId);
+    console.log("req.User.Id", req.user.sub);
+
+    if(req.files) {
+        var filePath = req.files.image.path;
+        //var fileSplit = filePath.split('\\');
+        var fileSplit = filePath.split('/');
+        var fileName = fileSplit[2];
+        var fileExt = fileName.split('\.')[1];
+        
+        // res.status(200).send({ "filePath": filePath, "fileSplit": fileSplit, "fileName": fileName, "fileExt": extSplit });
+
+        if(fileExt == 'png' || fileExt == 'jpg' || fileExt == 'jpeg' || fileExt == 'gif') {
+            
+            if(userId != req.user.sub) {
+                return res.status(500).send({ message: "No tienes permiso para actualizar el usuario."});
+            }
+            
+            User.findByIdAndUpdate(userId, { image: fileName }, { new:true }, (err, userUpdated) => {
+                if(err) {
+                    res.status(500).send({ message: "Error al actualizar el usuario." });
+                }
+                else {
+                    if(!userUpdated) {
+                        res.status(404).send({ message: "No se ha podido actualizar el usuario." });
+                    }
+                    else {
+                        res.status(200).send({ message: "Usuario actualizado correctamente.", Usuario: userUpdated, image: fileName });
+                    }
+                }
+            });
+        } else {
+            fs.unlink(filePath, (err) => {
+                if(err) {
+                    res.status(404).send({ message: "Extensión válida y fichero no borrado." });
+                } else {
+                    res.status(404).send({ message: "Extensión no válida." });
+                }
+            });
+        }
+    }
+    else {
+        res.status(200).send({ message: "No se han subido ficheros." });
+    }
+}
+
+function getImageFile(req, res) {
+    var imageFile = req.params.imageFile;
+    var pathFile = './uploads/users/' + imageFile;
+
+    fs.exists(pathFile, function(exist) {
+        if(exist) {
+            res.sendFile(path.resolve(pathFile));
+        }
+        else {
+            res.status(404).send({ message: "La imagen no existe." });
+        }
+    });
+
+    // res.status(200).send({ message: "getImageFile" });
+}
+
 // Exports
 module.exports = {
-    getUser, saveUser, login
+    getUser, saveUser, login, udpateUser, uploadImage, getImageFile
 };
