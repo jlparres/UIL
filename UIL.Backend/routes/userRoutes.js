@@ -10,6 +10,7 @@ var multipart = require('connect-multiparty');
 var mdUpload = multipart({ uploadDir: './uploads/users' });
 
 // Nombre de la ruta del API
+api.get('/admins', UserController.getAdmins);
 api.get('/users', mdAuth.ensureAuth, UserController.getUser);
 api.post('/register', UserController.saveUser);
 api.post('/login', UserController.login);

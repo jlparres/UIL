@@ -222,7 +222,24 @@ function getImageFile(req, res) {
     // res.status(200).send({ message: "getImageFile" });
 }
 
+function getAdmins(req, res) {
+    User.find({ role: 'ROLE_ADMIN' }).exec((err, users) => {
+        if(err) {
+            res.status(500).send({ message: "Error en la petición." });
+        }
+        else {
+            if(users) {
+                res.status(200).send({ users });
+            }
+            else {
+                res.status(404).send({ message: "No existen Admins" });
+            }
+        }
+    });
+    // res.status(200).send({ message: "getAdmins" });
+}
+
 // Exports
 module.exports = {
-    getUser, saveUser, login, udpateUser, uploadImage, getImageFile
+    getUser, saveUser, login, udpateUser, uploadImage, getImageFile, getAdmins
 };
