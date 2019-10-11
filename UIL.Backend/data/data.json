@@ -1,54 +1,99 @@
-{
-    "name": "Jorge Luis",
-    "surname": "Parres",
-    "email": "jlparres@gmail.com",
-    "password": "jorge",
-    "nick": "Xipi"
-},
-{
-    "name": "Manuel",
-    "surname": "Trenado",
-    "email": "mtrenado69@gmail.com",
-    "password": "lolo",
-    "nick": "Lolo"
-},
-{
-    "name": "Manu",
-    "surname": "Ruzafa",
-    "email": "sonker@gmail.com",
-    "password": "manu",
-    "nick": "SoNk"
-},
-{
-    "name": "Chritian",
-    "surname": "Feliu",
-    "email": "christianfeliu2388@gmail.com",
-    "password": "christian",
-    "nick": "Feliu"
-},
-{
-    "name": "Cristobal",
-    "surname": "Montañez",
-    "email": "crissmonti@gmail.com",
-    "password": "cristobal",
-    "nick": "Cris"
-},
-{
-    "name": "Antonio",
-    "surname": "Caballero",
-    "email": "antonio.caballero.alcaraz@gmail.com",
-    "password": "toni",
-    "nick": "Toni"
-},
-{
-    "name": "David",
-    "surname": "David",
-    "email": "davidmanacor@gmail.com",
-    "password": "david",
-    "nick": "David"
-}
+// User.Add
+name:David
+surname:David
+email:davidmanacor@gmail.com
+password:david
+nick:david
+
+name:Antonio
+surname:Caballero
+email:antonio.caballero.alcaraz@gmail.com
+password:toni
+nick:Toni
+
+name:Cristobal
+surname:Montañez
+email:crissmonti@gmail.com
+password:cristobal
+nick:Cris
+
+name:Christian
+surname:Feliu
+email:christianfeliu2388@gmail.com
+password:christian
+nick:Feliu
+
+name:Jorge Luis
+surname:Parres
+email:jlparres@gmail.com
+password:jorge
+nick:Xipi
+
+name:Manuel
+surname:Trenado
+email:mtrenado69@gmail.com
+password:lolo
+nick:Lolo
+
+name:Manu
+surname:Ruzafa
+email:sonker@gmail.com
+password:manu
+nick:SoNk
 
 
+
+// PostMan enviar datos
+// Weapon.Add
+name:G36
+description:G35 de SoNk
+adquisitionDate:01/01/2017
+type:Fusil
+price:200
+buyPrice:200
+sellPrice:200
+currency:EUR
+user:5da06b39016ccc4888c88cc1
+
+name:M4
+description:M4 de Xipi
+adquisitionDate:01/01/2017
+type:Fusil
+price:180
+buyPrice:180
+sellPrice:180
+currency:EUR
+user:5d53b8f9355b123eccf65471
+
+name:AK47
+description:AK47 de Lolo
+adquisitionDate:01/01/2017
+type:Fusil
+price:160
+buyPrice:160
+sellPrice:160
+currency:EUR
+user:5d53b987355b123eccf65473
+
+name:MP5
+description:MP5 de Cristobal
+adquisitionDate:01/01/2017
+type:Fusil
+price:140
+buyPrice:140
+sellPrice:140
+currency:EUR
+user:5da069b4556f7451f4c723bb
+
+name:Dragunov
+description:Dragunov de Toni
+adquisitionDate:01/01/2017
+type:Francotirador
+price:200
+buyPrice:200
+sellPrice:200
+currency:EUR
+user:5da069ae556f7451f4c723ba
 
 
 

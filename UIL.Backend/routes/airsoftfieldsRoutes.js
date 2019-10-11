@@ -14,13 +14,13 @@ var mdAuth = require('../middlewares/authenticated');
 
 //DeleteById, UpdateById, ReplaceById, Add, GetFiltered, GetAll, GetById
 
-api.get('get-all', AirSoftFieldController.GetAll);
-api.get('get/:id', AirSoftFieldController.GetById);
+api.get('/get-all', AirSoftFieldController.GetAll);
+api.get('/get/:id', AirSoftFieldController.GetById);
 
-api.post('add', mdAuth.ensureAuth, AirSoftFieldController.Add);
-api.patch('update/:id', mdAuth.ensureAuth, AirSoftFieldController.UpdateById);
-api.put('replace/:id', mdAuth.ensureAuth, AirSoftFieldController.ReplaceById);
-api.delete('delete/:id', mdAuth.ensureAuth, AirSoftFieldController.DeleteById);
+api.post('/add', mdAuth.ensureAuth, AirSoftFieldController.Add);
+api.patch('/update/:id', mdAuth.ensureAuth, AirSoftFieldController.UpdateById);
+api.put('/replace/:id', mdAuth.ensureAuth, AirSoftFieldController.ReplaceById);
+api.delete('/delete/:id', mdAuth.ensureAuth, AirSoftFieldController.DeleteById);
 
 module.exports = api;
 

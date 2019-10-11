@@ -1,0 +1,762 @@
+{
+	"info": {
+		"_postman_id": "a34d54e2-0ade-40e6-a042-d74895ded672",
+		"name": "UIL.API",
+		"description": "Proyecto de Unidad Intervención Lince",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Usuario.Registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Manuel",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Trenado",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mtrenado69@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "lolo",
+									"type": "text"
+								},
+								{
+									"key": "nick",
+									"value": "Lolo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Resgistrar nuevo usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "jlparres@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "jorge",
+									"type": "text"
+								},
+								{
+									"key": "getToken",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.getUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3789/api/user/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"user",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.getUserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3789/api/user/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"user",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AirSoft",
+			"item": [
+				{
+					"name": "AirSoft.GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AirSoft.GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/get/921437451",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"get",
+								"921437451"
+							]
+						},
+						"description": "Obtener campo por Id"
+					},
+					"response": []
+				},
+				{
+					"name": "AirSoft.Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"add"
+							]
+						},
+						"description": "Crear un campo de juego"
+					},
+					"response": []
+				},
+				{
+					"name": "AirSoft.Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/update/jadahga",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"update",
+								"jadahga"
+							]
+						},
+						"description": "Actualizar datos de un campo."
+					},
+					"response": []
+				},
+				{
+					"name": "AirSoft.Replace",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/replace/asdad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"replace",
+								"asdad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				},
+				{
+					"name": "AirSoft.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/airsoft/delete/dsad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"airsoft",
+								"delete",
+								"dsad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				}
+			],
+			"description": "Controlador de los campos de AirSoft"
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "Game.GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Game.GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/get/921437451",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"get",
+								"921437451"
+							]
+						},
+						"description": "Obtener campo por Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Game.Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"add"
+							]
+						},
+						"description": "Crear un campo de juego"
+					},
+					"response": []
+				},
+				{
+					"name": "Game.Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/update/jadahga",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"update",
+								"jadahga"
+							]
+						},
+						"description": "Actualizar datos de un campo."
+					},
+					"response": []
+				},
+				{
+					"name": "Game.Replace",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/replace/asdad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"replace",
+								"asdad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				},
+				{
+					"name": "Game.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/game/delete/dsad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"game",
+								"delete",
+								"dsad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				}
+			],
+			"description": "Controlador de los campos de AirSoft"
+		},
+		{
+			"name": "Weapons",
+			"item": [
+				{
+					"name": "Weapon.GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/get-all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Weapon.GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/get/921437451",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"get",
+								"921437451"
+							]
+						},
+						"description": "Obtener campo por Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Weapon.Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"add"
+							]
+						},
+						"description": "Crear un campo de juego"
+					},
+					"response": []
+				},
+				{
+					"name": "Weapon.Update",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/update/jadahga",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"update",
+								"jadahga"
+							]
+						},
+						"description": "Actualizar datos de un campo."
+					},
+					"response": []
+				},
+				{
+					"name": "Weapon.Replace",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/replace/asdad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"replace",
+								"asdad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				},
+				{
+					"name": "Weapon.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZDUzYjhmOTM1NWIxMjNlY2NmNjU0NzEiLCJuYW1lIjoiSm9yZ2UgTHVpcyIsInN1cm5hbWUiOiJQYXJyZXMiLCJlbWFpbCI6ImpscGFycmVzQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJuaWNrIjoiWGlwaSIsImlhdCI6MTU3MDc3NTY2MX0.XQahJvoRkBCJtT21FnRakmz1FH3TjRJ986D-cHWt0pY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3789/api/weapon/delete/dsad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3789",
+							"path": [
+								"api",
+								"weapon",
+								"delete",
+								"dsad"
+							]
+						},
+						"description": "Reemplazar los datos de un campo por otro."
+					},
+					"response": []
+				}
+			],
+			"description": "Controlador de los campos de AirSoft"
+		}
+	]
+}

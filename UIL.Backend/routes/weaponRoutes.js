@@ -12,5 +12,13 @@ var mdUpload = multipart({ uploadDir: './uploads/weapons' });
 // Nombre de la ruta del API
 api.get('/get-weapons', mdAuth.ensureAuth, WeaponController.getWeapons);
 
+api.get('/get-all', WeaponController.GetAll);
+api.get('/get/:id', WeaponController.GetById);
+
+api.post('/add', mdAuth.ensureAuth, WeaponController.Add);
+api.patch('/update/:id', mdAuth.ensureAuth, WeaponController.UpdateById);
+api.put('/replace/:id', mdAuth.ensureAuth, WeaponController.ReplaceById);
+api.delete('/delete/:id', mdAuth.ensureAuth, WeaponController.DeleteById);
+
 module.exports = api;
 

@@ -12,9 +12,38 @@ var User = require('../models/user');
 
 
 // Acciones
-function getUser(req, res) {
-    res.status(200).send({
-        message: 'Usuario Logeado.', Usuario: req.user
+function getUsers(req, res) {
+    User.find({}).exec((err, users) => {
+        if(err) {
+            res.status(500).send({ message: "Error en la petición." });
+        }
+        else {
+            if(users) {
+                res.status(200).send({ users });
+            }
+            else {
+                res.status(404).send({ message: "No existen Usuarios." });
+            }
+        }
+    });
+}
+
+function getUserById(req, res) {
+    //var userId = new ObjectId(req.params.id);
+    var userId = req.params.id;
+    
+    User.findById(userId).exec((err, users) => {
+        if(err) {
+            res.status(500).send({ message: err.message, error: err });
+        }
+        else {
+            if(users) {
+                res.status(200).send({ users });
+            }
+            else {
+                res.status(404).send({ message: "No exite el usuario buscado" });
+            }
+        }
     });
 }
 
@@ -241,5 +270,5 @@ function getAdmins(req, res) {
 
 // Exports
 module.exports = {
-    getUser, saveUser, login, udpateUser, uploadImage, getImageFile, getAdmins
+    getUsers, saveUser, login, udpateUser, uploadImage, getImageFile, getAdmins, getUserById
 };

@@ -11,7 +11,9 @@ var mdUpload = multipart({ uploadDir: './uploads/users' });
 
 // Nombre de la ruta del API
 api.get('/admins', UserController.getAdmins);
-api.get('/users', mdAuth.ensureAuth, UserController.getUser);
+api.get('/users', mdAuth.ensureAuth, UserController.getUsers);
+api.get('/:id', mdAuth.ensureAuth, UserController.getUserById);
+
 api.post('/register', UserController.saveUser);
 api.post('/login', UserController.login);
 api.put('/update-user/:id', mdAuth.ensureAuth, UserController.udpateUser);

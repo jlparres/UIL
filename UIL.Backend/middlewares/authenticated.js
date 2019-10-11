@@ -3,6 +3,7 @@
 var jwt = require('jwt-simple');
 var moment = require('moment');
 var secret = 'Clave_Secreta_D3_Un1d4d_Int3rvec10n_L1nc3';
+moment.locale('es');
 
 // La peticion next es para que no se quede pendiente.
 exports.ensureAuth = function(req, res, next) {

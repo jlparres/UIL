@@ -14,12 +14,12 @@ var mdAuth = require('../middlewares/authenticated');
 
 //DeleteById, UpdateById, ReplaceById, Add, GetFiltered, GetAll, GetById
 
-api.get('get-all', GameController.GetAll);
-api.get('get/:id', GameController.GetById);
+api.get('/get-all', GameController.GetAll);
+api.get('/get/:id', GameController.GetById);
 
-api.post('add', mdAuth.ensureAuth, GameController.Add);
-api.patch('update/:id', mdAuth.ensureAuth, GameController.UpdateById);
-api.put('replace/:id', mdAuth.ensureAuth, GameController.ReplaceById);
-api.delete('delete/:id', mdAuth.ensureAuth, GameController.DeleteById);
+api.post('/add', mdAuth.ensureAuth, GameController.Add);
+api.patch('/update/:id', mdAuth.ensureAuth, GameController.UpdateById);
+api.put('/replace/:id', mdAuth.ensureAuth, GameController.ReplaceById);
+api.delete('/delete/:id', mdAuth.ensureAuth, GameController.DeleteById);
 
 module.exports = api;
