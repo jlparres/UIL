@@ -12,7 +12,9 @@ var User = require('../models/user');
 
 
 // Acciones
-function getUsers(req, res) {
+// GetAll
+// GET https://localhost:3789/api/user
+function GetAll(req, res, next) {
     User.find({}).exec((err, users) => {
         if(err) {
             res.status(500).send({ message: "Error en la petición." });
@@ -28,7 +30,7 @@ function getUsers(req, res) {
     });
 }
 
-function getUserById(req, res) {
+function GetUserById(req, res) {
     //var userId = new ObjectId(req.params.id);
     var userId = req.params.id;
     
@@ -47,7 +49,7 @@ function getUserById(req, res) {
     });
 }
 
-function saveUser(req, res) {
+function Add(req, res) {
     var user = new User();
 
     // Recoger parametros de peticion
@@ -108,7 +110,7 @@ function saveUser(req, res) {
     }
 }
 
-function login(req, res) {
+function Login(req, res) {
     var params = req.body;
 
     var email = params.email;
@@ -156,7 +158,7 @@ function login(req, res) {
     });
 }
 
-function udpateUser(req, res) {
+function UpdateById(req, res) {
     var userId = req.params.id;
     var update = req.body;
     console.log("req", req.user);
@@ -251,7 +253,7 @@ function getImageFile(req, res) {
     // res.status(200).send({ message: "getImageFile" });
 }
 
-function getAdmins(req, res) {
+function GetAdmins(req, res) {
     User.find({ role: 'ROLE_ADMIN' }).exec((err, users) => {
         if(err) {
             res.status(500).send({ message: "Error en la petición." });
@@ -268,7 +270,17 @@ function getAdmins(req, res) {
     // res.status(200).send({ message: "getAdmins" });
 }
 
+// Delete
+// DEL https://localhost:3789/api/weapon/:id
+function DeleteById(req, res) {
+    var itemId = req.params.id;
+    res.send('Delete ' + itemId);
+    console.log('Delete ' + itemId);    
+    res.status(200).send({ message: "DeleteById" });
+}
+
+
 // Exports
 module.exports = {
-    getUsers, saveUser, login, udpateUser, uploadImage, getImageFile, getAdmins, getUserById
+    GetAll, Add, GetUserById, Login, UpdateById, uploadImage, getImageFile, GetAdmins, DeleteById
 };
