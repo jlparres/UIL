@@ -49,6 +49,8 @@ function GetUserById(req, res) {
     });
 }
 
+// Create
+// POST https://localhost:3789/api/user/create
 function Add(req, res) {
     var user = new User();
 
@@ -110,6 +112,8 @@ function Add(req, res) {
     }
 }
 
+// Login
+// POST https://localhost:3789/api/user/login
 function Login(req, res) {
     var params = req.body;
 
@@ -158,6 +162,8 @@ function Login(req, res) {
     });
 }
 
+// Update
+// PATCH https://localhost:3789/api/user/update/:id
 function UpdateById(req, res) {
     var userId = req.params.id;
     var update = req.body;
@@ -271,7 +277,7 @@ function GetAdmins(req, res) {
 }
 
 // Delete
-// DEL https://localhost:3789/api/weapon/:id
+// DEL https://localhost:3789/api/user/delete/:id
 function DeleteById(req, res) {
     var itemId = req.params.id;
     res.send('Delete ' + itemId);
