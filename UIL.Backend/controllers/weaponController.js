@@ -1,6 +1,5 @@
 'use strict'
 // Modulos y librerias
-var bcrypt = require('bcrypt-nodejs');
 var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
@@ -155,11 +154,91 @@ function UpdateById(req, res) {
 // DEL https://localhost:3789/api/weapon/:id
 function DeleteById(req, res) {
     var itemId = req.params.id;
-    res.send('Delete ' + itemId);
-    console.log('Delete ' + itemId);    
-    res.status(200).send({ message: "DeleteById" });
+
+    if(itemId) {
+        Weapon.findByIdAndRemove(itemId, (err, weaponRemove ) => {
+            if(err) {
+                res.status(500).send({ message: "Error en la petición." });
+            }
+            else {
+                if(weaponRemove) {
+                    res.status(200).send({ messgae: "Se ha borrado correctamente.", Weapon: weaponRemove });
+                }
+                else {
+                    res.status(404).send({ messgae: "El identificador que quieres borrar no existe." });
+                }
+            }
+        })
+    }
+    else {
+        res.status(500).send({ message: "Indica un parametro correcto." })
+    }
 }
 
 
+function UploadImage(req, res) {
+    var weaponId = req.params.id;
+    var fileName = 'No subido...';
+    
+    console.log("Weapon", weaponId);
+    //console.log("req.weaponId.Id", req.user.sub);
 
-module.exports = { getWeapons, DeleteById, UpdateById, ReplaceById, Add, GetFiltered, GetAll, GetById };
+    if(req.files) {
+        var filePath = req.files.image.path.replace(new RegExp('/', 'g'), '\\');
+        console.log("filePath", filePath);
+        //var fileSplit = filePath.split('\\');
+        var fileSplit = filePath.split('\\');
+        var fileName = fileSplit[2];
+        var fileExt = fileName.split('\.')[1];
+
+        console.log("fileName", fileName);
+        console.log("fileExt", fileExt);
+        console.log("Weapon", weaponId);
+        
+        // res.status(200).send({ "filePath": filePath, "fileSplit": fileSplit, "fileName": fileName, "fileExt": extSplit });
+
+        if(fileExt == 'png' || fileExt == 'jpg' || fileExt == 'jpeg' || fileExt == 'gif') {
+            
+            Weapon.findByIdAndUpdate(weaponId, { image: fileName }, { new:true }, (err, weaponUpdated) => {
+                if(err) {
+                    res.status(500).send({ message: "Error al actualizar weapon." });
+                }
+                else {
+                    if(!weaponUpdated) {
+                        res.status(404).send({ message: "No se ha podido actualizar weapon." });
+                    }
+                    else {
+                        res.status(200).send({ message: "Weapon actualizado correctamente.", Weapon: weaponUpdated, image: fileName });
+                    }
+                }
+            });
+        } else {
+            fs.unlink(filePath, (err) => {
+                if(err) {
+                    res.status(404).send({ message: "Extensión válida y fichero no borrado." });
+                } else {
+                    res.status(404).send({ message: "Extensión no válida." });
+                }
+            });
+        }
+    }
+    else {
+        res.status(200).send({ message: "No se han subido ficheros." });
+    }
+}
+
+function GetImageFile(req, res) {
+    var imageFile = req.params.imageFile;
+    var pathFile = './uploads/weapons/' + imageFile;
+
+    fs.exists(pathFile, function(exist) {
+        if(exist) {
+            res.sendFile(path.resolve(pathFile));
+        }
+        else {
+            res.status(404).send({ message: "La imagen no existe." });
+        }
+    });
+}
+
+module.exports = { getWeapons, DeleteById, UpdateById, ReplaceById, Add, GetFiltered, GetAll, GetById, UploadImage, GetImageFile };
