@@ -8,6 +8,8 @@ var jwt = require('../services/jwt');
 // Modelos
 var AirsoftField = require('../models/airsoftfield');
 
+// Modifico este controlador pero no añado funcionalidad.
+
 // GetAll
 // GET https://localhost:3789/api/arisoftfield
 function GetAll(req, res, next) {
