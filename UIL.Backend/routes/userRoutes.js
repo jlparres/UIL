@@ -20,8 +20,8 @@ api.post('/register', UserController.Add);
 api.delete('/delete/:id', mdAuth.ensureAuth, UserController.DeleteById);
 api.patch('/update/:id', mdAuth.ensureAuth, UserController.UpdateById);
 
-api.post('/upload-img-user/:id', [ mdAuth.ensureAuth, mdUpload ], UserController.uploadImage);
-api.get('/get-image-file/:imageFile', UserController.getImageFile);
+api.post('/upload-img-user/:id', [ mdAuth.ensureAuth, mdUpload ], UserController.UploadImage);
+api.get('/get-image-file/:imageFile', UserController.GetImageFile);
 
 
 module.exports = api;

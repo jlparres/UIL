@@ -193,7 +193,7 @@ function UpdateById(req, res) {
 }
 
 
-function uploadImage(req, res) {
+function UploadImage(req, res) {
     var userId = req.params.id;
     var fileName = 'No subido...';
     
@@ -201,9 +201,9 @@ function uploadImage(req, res) {
     console.log("req.User.Id", req.user.sub);
 
     if(req.files) {
-        var filePath = req.files.image.path;
+        var filePath = req.files.image.path.replace(new RegExp('/', 'g'), '\\');
         //var fileSplit = filePath.split('\\');
-        var fileSplit = filePath.split('/');
+        var fileSplit = filePath.split('\\');
         var fileName = fileSplit[2];
         var fileExt = fileName.split('\.')[1];
         
@@ -243,7 +243,7 @@ function uploadImage(req, res) {
     }
 }
 
-function getImageFile(req, res) {
+function GetImageFile(req, res) {
     var imageFile = req.params.imageFile;
     var pathFile = './uploads/users/' + imageFile;
 
@@ -288,5 +288,5 @@ function DeleteById(req, res) {
 
 // Exports
 module.exports = {
-    GetAll, Add, GetUserById, Login, UpdateById, uploadImage, getImageFile, GetAdmins, DeleteById
+    GetAll, Add, GetUserById, Login, UpdateById, UploadImage, GetImageFile, GetAdmins, DeleteById
 };
