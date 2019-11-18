@@ -52,7 +52,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3789/api/register",
+							"raw": "http://localhost:3789/api/user/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
